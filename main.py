@@ -23,6 +23,7 @@ speedrun = 1
 
 
 #fonctions
+
 #les statistiques
 def statistique():
     print('''Votre Statistique:
@@ -54,8 +55,8 @@ def guide_affichage():
  |_________________________________________________________|''')
 
 
-speedrun = input(str('Voulez-vous speedrun mode (1 pour oui 2 pour non):'))
-if speedrun == '1':
+speedrun = int(input('Voulez-vous speedrun mode (1 pour oui 2 pour non):'))
+if speedrun == 1:
     speedrun = 0
     print('speed run mode activated')
     time.sleep(1)
@@ -64,9 +65,11 @@ else:
     time.sleep(1)
 
 
+
 #mot de bienvenue et explication de règlement
 print('Bonjour et bievenue à Door Ennemies. Vous êtes dans un couloir sans fin rempli de porte. Derrière chaque porte sera un menace à ta vie. Voici un manuel qui peut t\'aider.')
 time.sleep(3)
+
 #le guide en visuel
 print('''_____________________
 |                    |
@@ -77,6 +80,7 @@ print('''_____________________
 |         E          |
 | ___________________|
 ''')
+
 #animation décorative
 for i in range(3):
     print("PRESS Enter pour ouvrir le guide", end='')
@@ -84,8 +88,10 @@ for i in range(3):
     print('\r', end='')
     time.sleep(0.5)
 input('PRESS Enter pour ouvrir le guide')
+
 #le guide de en haut
 guide_affichage()
+
 #animation pour obliger l'utilisateur d'attendre un peu avant de commencer le jeu
 for i in range(10):
     print("PRESS Enter commencer le jeu", end='')
@@ -95,6 +101,7 @@ for i in range(10):
 
 input('PRESS Enter pour commencer le jeu')
 avoid = None
+
 #le main loop pour le jeu
 while playing == True:
     run = False
@@ -102,7 +109,7 @@ while playing == True:
         statistique()
         input('Press Enter pour continuer vers une porte')
         detection = int(winstreak)
-        if detection%3 == 0:
+        if detection%3 == 0 and detection != 0:
             print('Ton rumeur de succès a été entendu par un grand monstre')
             strength = random.randint(12, 20)
             time.sleep(speedrun)
@@ -125,10 +132,12 @@ while playing == True:
         time.sleep(speedrun)
         sauter = False
     if Devoid == '3':
+
         #le joueur veut regarder les règles
         guide_affichage()
         sauter = True
     elif Devoid == '2':
+
         #le joueur décide d'attaquer
         print('Tu avance vers le monstre et entre en combat avec celui ci!')
         time.sleep(speedrun)
@@ -160,6 +169,7 @@ while playing == True:
             health = health + strength
             print('Santé +' + str(strength))
     else:
+
         #le joeur ne veut pas combattre
         health = health - 1
         print('Ayant peur du montre, tu as retourné au milieu du couloir...')
@@ -167,6 +177,7 @@ while playing == True:
         print('Santé -1')
         time.sleep(speedrun)
         run = True
+
     #si le joueur a aucun santé
     if health <= 0 and defeats > 0 and run == False:
         print('Tu es rempli de blessures de bataille. Malheureusement, tu saignes trop et tu es mort ')
@@ -178,7 +189,7 @@ while playing == True:
         playing = False
     elif health <= 0 and defeats == 0 and run == True:
         print('Pourquoi tu court de tes problème?')
-        time.sleep(speedrun)
+        time.sleep(speedrun)a
         print('Regard, maintenant tu es mort à cause de manque d\'énergie à s\'échapper des monstres... ')
         time.sleep(speedrun)
         print('Au revoir! voici les stats ')
