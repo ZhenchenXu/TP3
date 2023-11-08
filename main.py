@@ -31,6 +31,7 @@ Santé: ''' + str(health))
     print('Combats: ' + str(battles))
     print('Victories: ' + str(victories))
     print('Defeats: ' + str(defeats))
+    print('winstreak: ' + str(winstreak))
 
 #le affichage pour le guide
 def guide_affichage():
@@ -103,9 +104,9 @@ input('PRESS Enter pour commencer le jeu')
 avoid = None
 
 #le main loop pour le jeu
-while playing == True:
+while playing:
     run = False
-    if sauter == False:
+    if not sauter:
         statistique()
         input('Press Enter pour continuer vers une porte')
         detection = int(winstreak)
@@ -156,6 +157,7 @@ while playing == True:
             health = health - strength
             print('Santé -' + str(strength))
             time.sleep(speedrun)
+            winstreak = 0
         else:
             print('Le monstre a été effacé de l\'existence par ton attaque. ')
             battles = battles + 1
@@ -189,7 +191,7 @@ while playing == True:
         playing = False
     elif health <= 0 and defeats == 0 and run == True:
         print('Pourquoi tu court de tes problème?')
-        time.sleep(speedrun)a
+        time.sleep(speedrun)
         print('Regard, maintenant tu es mort à cause de manque d\'énergie à s\'échapper des monstres... ')
         time.sleep(speedrun)
         print('Au revoir! voici les stats ')
