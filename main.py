@@ -107,26 +107,32 @@ avoid = None
 while playing:
     run = False
     if not sauter:
+        #montrer les statistiques du joueur
         statistique()
         input('Press Enter pour continuer vers une porte')
         detection = int(winstreak)
+        #détecter si le joueur a 3 winstreak pour un boss
         if detection%3 == 0 and detection != 0:
+            #un boss spawn
             print('Ton rumeur de succès a été entendu par un grand monstre')
             strength = random.randint(12, 20)
             time.sleep(speedrun)
             print('Le boss est de niveau ' + str(strength) + '!')
             time.sleep(speedrun)
         else:
+            #entre dans une nouvelle et nouveau stat de monstre
             print("Tu as choisi une porte qui était ouverte, et a entré dedans la salle")
             strength = random.randint(2, 10)
             time.sleep(speedrun)
             print('Il y a un monstre! Le niveau du montre est ' + str(strength))
             time.sleep(speedrun)
+        #demander qu'est-ce que le joueur veux faire face au monstre
         print('Voulez-vous quitter la salle ou combattre cette monstre? 1 pour quitter, 2 pour combattre,')
         print("3 pour relire les instructions du jeu.")
         Devoid = input(str('Rappel toi que quitter la salle va te coûter un point de santé... Ton choix?: '))
         time.sleep(speedrun)
     else:
+        #demander qu'est-ce que le joueur veux faire face au monstre
         print('Voulez-vous quitter la salle ou combattre cette monstre? 1 pour quitter, 2 pour combattre,')
         print("3 pour relire les instructions du jeu.")
         Devoid = input(str('Rappel toi que quitter la salle va te coûter un point de santé... Ton choix?: '))
@@ -147,6 +153,7 @@ while playing:
         time.sleep(speedrun)
         print('Ton attaque était de niveau de force ' + str(attaque))
         time.sleep(speedrun)
+        #le joueur perd
         if attaque <= strength:
             print('Malheureusement, ton attaque n\'a pas pu tuer le monstre.')
             battles = battles + 1
@@ -159,6 +166,7 @@ while playing:
             time.sleep(speedrun)
             winstreak = 0
         else:
+            #le joueur gagne
             print('Le monstre a été effacé de l\'existence par ton attaque. ')
             battles = battles + 1
             victories = victories + 1
